@@ -3,34 +3,31 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: spzona <spzona@student.42.fr>              +#+  +:+       +#+         #
+#    By: Arbiter <Arbiter@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/23 17:29:08 by spzona            #+#    #+#              #
-#    Updated: 2021/12/23 19:28:39 by spzona           ###   ########.fr        #
+#    Updated: 2021/12/25 22:46:20 by Arbiter          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAG = -Wall -Werror -Wextra 
 
 NAME = libftprintf.a
-LIB = libft/libft.a
 
-SRC = src/ft_printf.c src/ft_utils
+SRC = ft_printf.c ft_utils.c ft_utils_2.c
 
-OBJS = $(patsubst %.c,%.o,$(SRC))
+OBJ = $(SRC:.c=.o)
 
 HEADER = ft_printf.h
 
 $(NAME): $(OBJ) $(HEADER)
-				@echo "Compiling libft"
-				@make -C libft
-				@cp $(LIB) $(NAME) 
-				@ar rcs $(NAME) $?
-				@echo "Making $(NAME)"
+				@ar rcs $(NAME) $(OBJ)
+				@echo "$(NAME) created"
+				@ranlib $(NAME)
 
 all: $(NAME)
 
-.c.o: $(HEADER)
+%.o: %.c $(HEADER)
 				@cc $(FLAG) -c $< -o $@ -I $(HEADER)
 				@echo "Compiling $<"
 
@@ -38,15 +35,10 @@ all: $(NAME)
 clean:
 				@rm -f $(OBJ)
 				@echo "OBJ deleted"
-				@make clean -C libft
-				@echo "OBJ in libft deleted"
 
 fclean: clean
 				@rm -f $(NAME)
 				@echo "Everything deleted"
-				@make fclean -C libft
-				@echo "OBJ in libft deleted"
-
 
 re: fclean all 
 
