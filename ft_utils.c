@@ -6,7 +6,7 @@
 /*   By: Arbiter <Arbiter@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 17:42:29 by spzona            #+#    #+#             */
-/*   Updated: 2021/12/25 22:04:30 by Arbiter          ###   ########.fr       */
+/*   Updated: 2021/12/26 04:34:39 by Arbiter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,3 @@ int	ft_pointer(unsigned long int num)
 	c++;
 	return (c);
 }
-
